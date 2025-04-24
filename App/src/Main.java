@@ -33,7 +33,7 @@ public class Main {
         Trip.VsiTripi();
 
         //izpis logike
-        // postaja z id 9,
+        // primer: postaja z id 9,
         //System.out.println("izpis prihodov na postajo: ");
         //Stop_times.prihodiNaPostaji(9, 2, 1);
 

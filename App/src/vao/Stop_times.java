@@ -173,7 +173,7 @@ public class Stop_times {
                         .collect(Collectors.toList());
 
                 String ure = casi.stream()
-                        .map(time -> time.toString()) // ali time.format(DateTimeFormatter.ofPattern("HH:mm"))
+                        .map(time -> time.toString().substring(0, 5)) // .substring da prikazem samo ure in minute --> brez sekund
                         .collect(Collectors.joining(", "));
 
                 //izpis za vsako linijo ce obstaja
