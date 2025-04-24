@@ -45,7 +45,7 @@ public class Stop {
 
         {
             try {
-                System.out.println("1. Tu");
+                //System.out.println("1. Tu");
 
                 br = new BufferedReader(new FileReader("../data/stops.txt"));
                 String vrstica;
@@ -62,7 +62,7 @@ public class Stop {
                     AllStops.add(postaja);
                 }
 
-                System.out.println("2. Konec");
+                //System.out.println("2. Konec");
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {

@@ -53,7 +53,7 @@ public class Trip {
                 br.readLine();
 
                 while ((vrstica = br.readLine()) != null) {
-                    System.out.println(vrstica);
+
                     String[] podatki = vrstica.split(",");
 
                     int podatkiInt_routeId = Integer.parseInt(podatki[0]);

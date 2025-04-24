@@ -118,7 +118,8 @@ public class Stop_times {
                 .filter(st -> st.getArrival_time().isAfter(now) && st.getArrival_time().isBefore(now.plusHours(2)))
                 .collect(Collectors.toList());
 
-        System.out.println("filtriran list: " + prihodi);
+        //testni izpis
+        //System.out.println("filtriran list: " + prihodi);
 
         // 2. Združimo po route_id da dobimo kljuc vrednost (linija in casi)
         Map<Integer, List<LocalTime>> poLinijah = new HashMap<>();
@@ -150,8 +151,10 @@ public class Stop_times {
 
         //pogoj za izpis:
         if(nacin == 1) {
-            // 3. Izpišemo v obliki:
-            // 6: 12:10, 12:15, 12:40
+            // 3. Izpišemo v obliki: 6: 12:10, 12:15, 12:40
+
+            //izpis
+            System.out.println("busTrips " + stopId + " relative");
             for (Map.Entry<Integer, List<LocalTime>> entry : poLinijah.entrySet()) {
                 int routeId = entry.getKey();
                 List<LocalTime> casi = entry.getValue().stream()
@@ -162,6 +165,7 @@ public class Stop_times {
                         .map(time -> time.toString()) // ali time.format(DateTimeFormatter.ofPattern("HH:mm"))
                         .collect(Collectors.joining(", "));
 
+                //izpis za vsako linijo ce obstaja
                 System.out.println(routeId + ": " + ure);
             }
         }else if(nacin == 2){
