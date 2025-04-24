@@ -83,6 +83,7 @@ public class Stop_times {
                     //ustvarim objekt postaje s casom prihoda
                     Stop_times Stop_wTime = new Stop_times(stop, arrival, departure);
 
+                    //lahko bi zdruzil z ustvarjanjem
                     AllStops_times.add(Stop_wTime);
                 }
             } catch (FileNotFoundException e) {
@@ -98,7 +99,7 @@ public class Stop_times {
     //toString
     @Override
     public String toString() {
-        return "stop: " + stop + ", arrival_time: " + arrival_time + ", departure_time: " + departure_time;
+        return "\nstop: " + stop + ", arrival_time: " + arrival_time + ", departure_time: " + departure_time ;
     }
 
     //metode

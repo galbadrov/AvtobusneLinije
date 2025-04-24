@@ -57,6 +57,8 @@ public class Stop {
                     String[] podatki = vrstica.split(",");
 
                     Stop postaja = new Stop(Integer.parseInt(podatki[0]), podatki[2]);
+
+                    //lahko bi zdruzil z ustvarjanjem
                     AllStops.add(postaja);
                 }
 
@@ -73,7 +75,7 @@ public class Stop {
     //toString
     @Override
     public String toString() {
-        return "stop_id= " + stop_id + ", stop_name='" + stop_name;
+        return "\nstop_id= " + stop_id + ", stop_name='" + stop_name;
     }
 
     //metode
