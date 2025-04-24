@@ -124,6 +124,8 @@ public class Stop_times {
         // 2. Združimo po route_id da dobimo kljuc vrednost (linija in casi)
         Map<Integer, List<LocalTime>> poLinijah = new HashMap<>();
 
+
+
         //filtrirajmo pridobljen trip_id iz stop times iz razrednega atributa AllTrips
         for (Stop_times st : prihodi) {
             String tripId = st.getTrip_id();
@@ -139,7 +141,12 @@ public class Stop_times {
                 // Preverimo, ali ključ že obstaja v poLinijah
                 if (poLinijah.containsKey(routeId)) {
                     // Če obstaja, preprosto dodamo čas prihoda v obstoječi seznam
-                    poLinijah.get(routeId).add(st.getArrival_time());
+                    //pogoj da samo toliko koliko je podano stevilo max avtobusov
+                    if(poLinijah.get(routeId).size() < steviloAvtobusov) {
+                        poLinijah.get(routeId).add(st.getArrival_time());
+                    }else{
+                        //ne dodamo vec avtobusa ker je zapolnjeno --> glede na stevilo ki smo ga podali
+                    }
                 } else {
                     // Če ključ ne obstaja, ustvarimo nov seznam, dodamo čas in ga shranimo v mapo
                     List<LocalTime> newTimes = new ArrayList<>();
@@ -149,12 +156,16 @@ public class Stop_times {
             }
         }
 
+        //dobimo ustrezni stop glede na podan id Postaje
+        Stop stopIzpis = AllStops_times.stream().filter(st -> st.getStop().getStop_id() == stopId).findFirst().get().getStop();
+
         //pogoj za izpis:
         if(nacin == 1) {
             // 3. Izpišemo v obliki: 6: 12:10, 12:15, 12:40
 
+
             //izpis
-            System.out.println("busTrips " + stopId + " relative");
+            System.out.println("busTrips " + stopId + " relative \n" + stopIzpis.getStop_name());
             for (Map.Entry<Integer, List<LocalTime>> entry : poLinijah.entrySet()) {
                 int routeId = entry.getKey();
                 List<LocalTime> casi = entry.getValue().stream()
