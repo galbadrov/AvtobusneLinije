@@ -181,7 +181,7 @@ public class Stop_times {
             //3. izpis
             //Izpišemo v obliki: 6: 10min, 15min, 40min
 
-            System.out.println("busTrips" + stopId + steviloAvtobusov + "relative \n" + stopIzpis.getStop_name());
+            System.out.println("busTrips " + stopId + " " + steviloAvtobusov + " relative \n" + stopIzpis.getStop_name());
 
             //nov Hashmap z <Integer, List<String>>
             Map<Integer, List<String>> poLinijahMinute = new HashMap<>();
