@@ -15,7 +15,7 @@ public class Main {
         System.out.println("Vnesi stevilo naslednjih avtobusov:");
         int st_avtobusov = sc.nextInt();
 
-        System.out.println("Vnesi nacin izpisa casa: \n 1 - relative \n 2 - absolute:");
+        System.out.println("Vnesi nacin izpisa casa prihoda: \n 1 - relative \n 2 - absolute:");
         int nacin_zapisa = sc.nextInt();
 
         //testni izpis --> ustrezno branje

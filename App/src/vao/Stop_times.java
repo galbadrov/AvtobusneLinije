@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -161,27 +162,47 @@ public class Stop_times {
 
         //pogoj za izpis:
         if(nacin == 1) {
-            // 3. Izpišemo v obliki: 6: 12:10, 12:15, 12:40
+            //3.izpis
+            //  Izpišemo v obliki: 6: 12:10, 12:15, 12:40
 
-
-            //izpis
             System.out.println("busTrips " + stopId + " relative \n" + stopIzpis.getStop_name());
-            for (Map.Entry<Integer, List<LocalTime>> entry : poLinijah.entrySet()) {
-                int routeId = entry.getKey();
-                List<LocalTime> casi = entry.getValue().stream()
-                        .sorted()
-                        .collect(Collectors.toList());
+            for (Map.Entry<Integer, List<LocalTime>> primer : poLinijah.entrySet()) {
+                int routeId = primer.getKey();
+                List<LocalTime> casi = primer.getValue().stream().sorted().collect(Collectors.toList()); // sortiramo po casu
 
-                String ure = casi.stream()
-                        .map(time -> time.toString().substring(0, 5)) // .substring da prikazem samo ure in minute --> brez sekund
-                        .collect(Collectors.joining(", "));
+                String ure = casi.stream().map(time -> time.toString().substring(0, 5)).collect(Collectors.joining(", "));
+                // .substring da prikazem samo ure in minute --> brez sekund
+
 
                 //izpis za vsako linijo ce obstaja
                 System.out.println(routeId + ": " + ure);
             }
-        }else if(nacin == 2){
-            //logika za
+        }else if(nacin == 2){ // prihodiNaPostaji(int stopId, int steviloAvtobusov, int nacin)
+            //3. izpis
+            //Izpišemo v obliki: 6: 10min, 15min, 40min
 
+            System.out.println("busTrips" + stopId + steviloAvtobusov + "relative \n" + stopIzpis.getStop_name());
+
+            //nov Hashmap z <Integer, List<String>>
+            Map<Integer, List<String>> poLinijahMinute = new HashMap<>();
+
+            //izpis casov
+            for(Map.Entry<Integer, List<LocalTime>> primer: poLinijah.entrySet()){
+                int routeId = primer.getKey();
+
+                // pomoc iz dokumentacije
+                List<String> primerOblikaMinute = primer.getValue().stream().sorted().map(time -> {Long preostaliCas = Duration.between(now, time).toMinutes(); return preostaliCas + "min";})
+                        .collect(Collectors.toList());
+
+                poLinijahMinute.put(routeId, primerOblikaMinute);
+                //zamenjali smo vrednosti casov v novem map-u z razliko v minutah med casom prihoda in trenutnim casom
+
+                //izpisemo razlike
+                System.out.println(routeId + ": " + primerOblikaMinute);
+            }
+
+        }else{
+            System.out.println("Niste vnesli ustreznega nacina izpisa prihoda!");
         }
     }
 }
