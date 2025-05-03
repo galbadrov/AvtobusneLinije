@@ -1,0 +1,12 @@
+global:
+  postgresql:
+    auth:
+      postgresPassword: mypassword
+      username: postgres
+      database: citus
+
+citus:
+  coordinator:
+    replicaCount: 1
+  worker:
+    replicaCount: 2
