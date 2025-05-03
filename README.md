@@ -18,3 +18,9 @@
 
 - Lokalno odpremo dashboard:  
   ![Lokalno odpremo dashboard](images/image6.png)
+
+- zazenemo deploy_citus.bat datoteko:
+  ![zazenemo deploy_citus.bat datoteko](images/image7.png)
+
+- nalozimo citrus in preverimo pods:
+  ![alt text](images/image8.png)

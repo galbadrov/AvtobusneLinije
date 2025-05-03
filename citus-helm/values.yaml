@@ -1,12 +1,11 @@
-global:
-  postgresql:
-    auth:
-      postgresPassword: mypassword
-      username: postgres
-      database: citus
+image:
+  repository: citusdata/citus
+  tag: latest
+  pullPolicy: IfNotPresent
 
-citus:
-  coordinator:
-    replicaCount: 1
-  worker:
-    replicaCount: 2
+coordinator:
+  replicas: 1
+  password: mypassword
+
+worker:
+  replicas: 2
