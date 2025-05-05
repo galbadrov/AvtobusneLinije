@@ -19,14 +19,14 @@
 - Lokalno odpremo dashboard:  
   ![Lokalno odpremo dashboard](images/image6.png)
 
-- Nalozimo Helm: 
+- Nalozimo Helm:  
   ![alt text](images/image9.png)
 
-- Nalozimo citrus in preverimo pods:
+- Nalozimo citrus in preverimo pods:  
   ![alt text](images/image8.png)
 
 
-- komande:
+- komande:  
     - minikube start         # ustvari lokalni cluster
     - kubectl get nodes      # preveri ali node teče
     - helm install citus .   # namesti Citus (ali drugo aplikacijo)
